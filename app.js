@@ -9,7 +9,7 @@ const verifyBtn = document.getElementById("verifyBtn");
 
 Swal.fire({
   text: `Enter Phone number : +92 300 1234567 `,
-  icon: 'info',  // success, error, warning, info, question
+  icon: 'info', 
   confirmButtonText: 'OK'
 });
 
@@ -31,15 +31,12 @@ sendBtn.addEventListener("click", () => {
       alert("OTP Sent");
       Swal.fire({
   text: `Enter Verification code : 112233`,
-  icon: 'info',  // success, error, warning, info, question
+  icon: 'info', 
   confirmButtonText: 'OK'
 
   
 });
 document.getElementById("recaptcha-container").style.display = "none";
-
-phoneInput.value = "";
-
     })
     .catch(err => alert(err.message));
 });
@@ -48,8 +45,9 @@ verifyBtn.addEventListener("click", () => {
   const code = otpInput.value;
   
   confirmationResult.confirm(code)
-    // .then(() => alert("Login Successful"))
     .then(() => Swal.fire({text : "Login Successful", icon: 'success'}))
     .catch(() => alert("Invalid OTP"));
+    phoneInput.value = "";
     otpInput.value = "";
 });
+
